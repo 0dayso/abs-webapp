@@ -1,0 +1,169 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+   <appender name="CONSOLE-DEBUG" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%t %-5p - %d{yyyy-MM-dd HH:mm:ss.SSS} %C::%M -- %m%n"/>
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMin" value="${log.level}" />
+            <!--<param name="LevelMax" value="FATAL "/>-->
+		</filter>
+	</appender>
+	<appender name="CONSOLE-INFO" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%t %-5p - %d{yyyy-MM-dd HH:mm:ss.SSS} %C::%M -- %m%n"/>
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMin" value="${log.level}" />
+            <!--<param name="LevelMax" value="FATAL "/>-->
+		</filter>
+	</appender>
+	<appender name="FILE-ALL" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="DatePattern" value="'.'yyyy-MM-dd" />
+		<param name="Append" value="true" />
+		<param name="file" value="${log.path}/abs-all.log" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%t %-5p - %d{yyyy-MM-dd HH:mm:ss.SSS} %C::%M -- %m%n"/>
+		</layout>
+	</appender>
+	<appender name="FILE-AOP" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="DatePattern" value="'.'yyyy-MM-dd" />
+		<param name="Append" value="true" />
+		<param name="file" value="${log.path}/abs-aop.log" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%t %-5p - %d{yyyy-MM-dd HH:mm:ss.SSS} %C::%M -- %m%n"/>
+		</layout>
+	</appender>
+	<appender name="FILE-SQL" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="DatePattern" value="'.'yyyy-MM-dd" />
+		<param name="Append" value="true" />
+		<param name="file" value="${log.path}/abs-sql.log" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%t %-5p - %d{yyyy-MM-dd HH:mm:ss.SSS} %C::%M -- %m%n"/>
+		</layout>
+   		<!--<filter class="org.apache.log4j.varia.LevelRangeFilter">
+    		<param name="LevelMin" value="DEBUG"/>
+    		<param name="LevelMax" value="DEBUG"/>
+   		</filter>-->
+	</appender>
+	
+	<appender name="FILE-EXCEPTION" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="file" value="${log.path}/abs-exception.log" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd"/>
+   		<layout class="org.apache.log4j.PatternLayout">
+    		<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss},%m%n"/>
+   		</layout>
+   		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+    		<param name="LevelMin" value="${log.level.error}"/>
+    		<param name="LevelMax" value="${log.level.error}"/>
+   		</filter>
+	</appender>
+	<!---->	
+	
+	<appender name="FILE-VELOCITY" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="DatePattern" value="'.'yyyy-MM-dd" />
+		<param name="Append" value="true" />
+		<param name="file" value="${log.path}/abs-velocity.log" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%t %-5p - %d{yyyy-MM-dd HH:mm:ss.SSS} %C::%M -- %m%n"/>
+		</layout>
+	</appender>
+	<appender name="FILE-TRANSACTION-PAY" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="DatePattern" value="'.'yyyy-MM-dd" />
+		<param name="Append" value="true" />
+		<param name="file" value="${log.path}/abs-transaction-pay.log" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%t %-5p - %d{yyyy-MM-dd HH:mm:ss.SSS} %C::%M -- %m%n"/>
+		</layout>
+	</appender>
+	<appender name="FILE-TRANSACTION-REFUND" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="DatePattern" value="'.'yyyy-MM-dd" />
+		<param name="Append" value="true" />
+		<param name="file" value="${log.path}/abs-transaction-refund.log" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%t %-5p - %d{yyyy-MM-dd HH:mm:ss.SSS} %C::%M -- %m%n"/>
+		</layout>
+	</appender>
+	<appender name="FILE-TRANSACTION-INVITE" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="DatePattern" value="'.'yyyy-MM-dd" />
+		<param name="Append" value="true" />
+		<param name="file" value="${log.path}/abs-transaction-invite.log" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%t %-5p - %d{yyyy-MM-dd HH:mm:ss.SSS} %C::%M -- %m%n"/>
+		</layout>
+	</appender>
+
+    <!--<category name="java.sql" additivity="false">
+		<priority value="${log.level}" />
+		<appender-ref ref="FILE-SQL" />
+		<appender-ref ref="CONSOLE-DEBUG" />
+		<appender-ref ref="FILE-ALL" />
+	</category>-->
+	<category name="org.apache.velocity" additivity="false">
+		<priority value="${log.level}" />
+		<appender-ref ref="FILE-VELOCITY" />
+		<appender-ref ref="FILE-ALL" />
+	</category>
+	<category name="TRANSACTION_PAY" additivity="false">
+		<priority value="${log.level}" />
+		<appender-ref ref="FILE-TRANSACTION-PAY" />
+		<appender-ref ref="CONSOLE-DEBUG" />
+		<appender-ref ref="FILE-ALL" />
+	</category>
+	<category name="TRANSACTION_REFUND" additivity="false">
+		<priority value="${log.level}" />
+		<appender-ref ref="FILE-TRANSACTION-REFUND" />
+		<appender-ref ref="CONSOLE-DEBUG" />
+		<appender-ref ref="FILE-ALL" />
+	</category>
+	<category name="TRANSACTION_INVITE" additivity="false">
+		<priority value="${log.level}" />
+		<appender-ref ref="FILE-TRANSACTION-INVITE" />
+		<appender-ref ref="CONSOLE-DEBUG" />
+		<appender-ref ref="FILE-ALL" />
+	</category>
+	<category name="com.sn.abs" additivity="false">
+		<priority value="${log.level}" />
+		<appender-ref ref="CONSOLE-DEBUG" />
+		<appender-ref ref="FILE-ALL" />
+	</category>
+
+	<category name="com.sn.abs.web" additivity="false">
+		<priority value="${log.level}" />
+		<appender-ref ref="CONSOLE-DEBUG" />
+		<appender-ref ref="FILE-ALL" />
+		<appender-ref ref="FILE-EXCEPTION" />
+	</category>
+
+	<category name="com.sn.abs.service" additivity="false">
+		<priority value="${log.level}" />
+		<appender-ref ref="CONSOLE-DEBUG" />
+		<appender-ref ref="FILE-ALL" />
+		<appender-ref ref="FILE-EXCEPTION" />
+	</category>
+	
+	<category name="com.ibatis" additivity="false">    
+		<priority value="info" /> 
+		<appender-ref ref="CONSOLE-DEBUG" />
+		<appender-ref ref="FILE-ALL" />
+		<appender-ref ref="FILE-SQL" />
+	</category>
+
+	<category name="java.sql" additivity="false">    
+		<priority value="${log.level}" />  
+		<appender-ref ref="CONSOLE-DEBUG" />
+		<appender-ref ref="FILE-ALL" />
+		<appender-ref ref="FILE-SQL" />
+	</category> 
+	
+	<category name="org.apache.cxf.interceptor" additivity="false">
+		<priority value="INFO" />
+		<appender-ref ref="FILE-ALL" />
+	</category>
+    <root>
+        <priority value="error"/>
+        <appender-ref ref="CONSOLE-INFO"/>
+        <appender-ref ref="FILE-ALL"/>
+    </root>
+</log4j:configuration>

@@ -1,0 +1,25 @@
+<script type="text/javascript" src="#springUrl('')/static/js/visit_book/staff.js?ver=$!ver"></script>
+<script type="text/javascript" >
+var url = '#springUrl('')/ctl/visitBook/';
+</script>
+<div class="row">
+    <div class="col-xs-2 col-md-2">
+		<input type="text" id="erpCode"  class="form-control" placeholder="员工账号" >
+	</div>		
+	<div class="col-xs-2 col-md-2">		
+		<input type="text" id="erpName"  class="form-control" placeholder="员工姓名"   >
+	</div>
+	<div class="col-xs-2 col-md-2">		
+		<input type="text" id="dept"  class="form-control" placeholder="部门">
+	</div>
+	<div class="col-xs-2 col-md-2">		
+		<input type="text" id="cellphone"  class="form-control" placeholder="员工手机号"  >
+	</div>		
+	<div class="col-xs-2 col-md-2">		
+    	<button id="search" class="btn btn-primary" type="button" >开始查询</button>
+	</div>
+</div>
+</br>
+##----------------------------------------------------------------------------
+#table('员工信息列表','staffList')
+

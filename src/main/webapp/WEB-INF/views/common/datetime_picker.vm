@@ -1,0 +1,14 @@
+<link rel="stylesheet" type="text/css" href="#springUrl('')/static/css/thirdparty/date/daterangepicker-bs3.css?ver=$!ver" />
+<script type="text/javascript" src="#springUrl('')/static/js/thirdparty/moment.js?ver=$!ver"></script>
+<script type="text/javascript" src="#springUrl('')/static/js/thirdparty/date/daterangepicker.js?ver=$!ver"></script>
+<div class="col-xs-2 col-md-2" style="width:270px">
+	<div class="input-group">
+        <div class="input-group-addon">
+            <i class="fa fa-calendar"></i>
+        </div>
+        <input type="text" class="form-control pull-left" placeholder="时间范围" id="daterange-btn"/>
+    </div>
+</div>
+
+<script type="text/javascript" src="#springUrl('')/static/js/date_compare.js?ver=$!ver"></script>
+

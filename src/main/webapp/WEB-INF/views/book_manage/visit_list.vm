@@ -1,0 +1,25 @@
+<script type="text/javascript" src="#springUrl('')/static/js/visit_book/visit.js?ver=$!ver"></script>
+<script type="text/javascript" >
+var url = '#springUrl('')/ctl/visitBook/';
+</script>
+<div class="row">
+    <div class="col-xs-2 col-md-2">
+		<input type="text" id="visitName"  class="form-control" placeholder="访客姓名" >
+	</div>		
+	<div class="col-xs-2 col-md-2">		
+		<input type="text" id="identityCard"  class="form-control" placeholder="访客身份证"   >
+	</div>
+	<div class="col-xs-2 col-md-2">		
+		<input type="text" id="cellphone"  class="form-control" placeholder="访客手机号"  >
+	</div>
+	<div class="col-xs-2 col-md-2">		
+		<input type="text" id="address"  class="form-control" placeholder="访客地址">
+	</div>
+	<div class="col-xs-2 col-md-2">		
+    	<button id="search" class="btn btn-primary" type="button" >开始查询</button>
+	</div>
+</div>
+</br>
+##----------------------------------------------------------------------------
+#table('员工信息列表','visitList')
+

@@ -1,0 +1,12 @@
+<link rel="stylesheet" type="text/css" href="#springUrl('')/static/css/thirdparty/date/bootstrap-datetimepicker.min.css?ver=$!ver" />
+<script type="text/javascript" src="#springUrl('')/static/js/thirdparty/date/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="#springUrl('')/static/js/thirdparty/date/bootstrap-datetimepicker.zh-CN.js"></script>
+<div class="col-xs-2 col-md-2">
+	<div class="input-group">
+        <div class="input-group-addon">
+            <i class="fa fa-calendar"></i>
+        </div>
+        <input type="text" class="form-control  pull-left" data-date-format="yyyy-mm-dd" placeholder="日期" id="date-btn"/>
+    </div>
+</div>
+

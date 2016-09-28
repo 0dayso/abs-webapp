@@ -1,0 +1,76 @@
+<script type="text/javascript" src="#springUrl('')/static/js/visit_book/book.js?ver=$!ver"></script>
+<script type="text/javascript" >
+var url = '#springUrl('')/ctl/visitBook/';
+</script>
+<div class="row">
+	##时间控件
+    #parse("views/common/datetime_picker.vm")
+    <div class="col-xs-2 col-md-2">
+		<input type="text" id="erpCode"  class="form-control" placeholder="员工账号" >
+	</div>		
+	<div class="col-xs-2 col-md-2">		
+		<input type="text" id="visitName"  class="form-control" placeholder="访客姓名"   >
+	</div>		
+	<div class="col-xs-2 col-md-2">		
+		<input type="text" id="cellphone"  class="form-control" placeholder="访客手机号"  >
+	</div>		
+	<div class="col-xs-2 col-md-2">		
+    	<button id="search" class="btn btn-primary" type="button" >开始查询</button>
+	</div>
+</div>
+</br>
+##----------------------------------------------------------------------------
+#toolTable('预约列表','bookList')
+
+<!--编辑对话框-->
+<div class="modal fade" id="bookModal">
+  <div class="modal-dialog"  style="width:500px">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">预约信息</h4>
+      </div>
+      <div class="modal-body" style="padding-left:20px;">
+			<form id="bookForm" role="form" class="form-horizontal"  method="post">
+    			<div class="form-group" style="padding-top:20px">
+    				<label for="" class="col-xs-3 col-md-3 form-label" >员工账号</label>
+					<div class="col-xs-7 col-md-7">
+						<input type="hidden" id="id" />
+						<input type="text" class="form-control" id="formErpCode" placeholder="员工账号"/>		
+					</div>
+    			</div>
+				<div class="form-group" style="padding-top:20px">
+    				<label for="" class="col-xs-3 col-md-3 form-label">访客姓名</label>
+					<div class="col-xs-7 col-md-7">
+						<input type="text" class="form-control" id="formVisitName" placeholder="访客姓名"/>	
+					</div>
+    			</div>
+				<div class="form-group" style="padding-top:20px">
+    				<label for="" class="col-xs-3 col-md-3 form-label">访客手机号</label>
+					<div class="col-xs-7 col-md-7">
+						<input type="text" class="form-control" id="formCellphone" placeholder="访客手机号"/>	
+					</div>
+    			</div>
+				<div class="form-group" style="padding-top:20px">
+    				<label for="" class="col-xs-3 col-md-3 form-label">预约时间</label>
+					<div class="col-xs-7 col-md-7">
+						<input type="text" class="form-control" id="formBookTime" placeholder="预约时间"/>	
+					</div>
+    			</div>
+				<div class="form-group" style="padding-top:20px">
+    				<label for="" class="col-xs-3 col-md-3 form-label">预约内容</label>
+					<div class="col-xs-7 col-md-7">
+						<input type="text" class="form-control" id="formComment" placeholder="预约内容"/>	
+					</div>
+    			</div>
+        	</form>
+			<div id="message" class="alert alert-success" style="display:none" role="alert">保存成功</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+        <button type="button" id="saveBookButton" class="btn btn-primary">保存</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+

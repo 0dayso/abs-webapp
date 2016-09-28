@@ -1,0 +1,43 @@
+<aside id="nav" class="left-side sidebar-offcanvas">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+        <!-- sidebar menu: : style can be found in sidebar.less -->
+        <ul class="sidebar-menu">
+            <li class="active">
+                <a href="#springUrl('')/default" target="main" class="target-link"><i class="fa fa-dashboard"></i> <span>应用概况</span></a>
+            </li>
+			#foreach($top in $menus)
+				<li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-bar-chart-o"></i>
+                        <span>$top.name</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+					
+					#if($top.hasSubMenus())
+        				<ul class="treeview-menu">
+							#foreach($subMenu in $!top.subMenus)
+        						#if($!subMenu.hasSubMenus())
+									<li class="dropdown-submenu">
+                						<a href="javascript:;" target="main" style="margin-left: 10px;" class="target-link"><i class="fa fa-angle-double-right"></i>$!subMenu.name</a>
+                                        <ul class="dropdown-menu" style="margin-top:0px; border-radius:0px;">
+											#foreach($menu in $subMenu.subMenus)
+                    							<li><a href="#springUrl('')$!menu.value"  target="main" style="margin-left:-10px; padding-top:7px; padding-bottom:7px;" class="target-link">$!menu.name</a></li>
+												#if($velocityCount!=$!subMenu.subMenus.size())
+													<div style="height:1px; width:100%; background-color: #e5e5e5;"></div>
+												#end	
+											#end
+                                        </ul>
+                                    </li>
+								#else
+									<li><a href="#springUrl('')$!subMenu.value" target="main" style="margin-left: 10px;" class="target-link"><i class="fa fa-angle-double-right"></i>$!subMenu.name</a></li>
+								#end
+    						#end
+                        </ul>
+        			#end
+                </li>
+			#end
+        </ul>
+    </section>
+    <!-- /.sidebar -->
+</aside>

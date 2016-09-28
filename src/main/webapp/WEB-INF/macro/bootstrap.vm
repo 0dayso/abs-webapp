@@ -1,0 +1,56 @@
+#macro(table,$tableTitle,$tableId,$downloadId)
+    <div class="box">
+        <div class="box-header">
+            <h5 class="box-title"><i class="fa  fa-table" ></i>&nbsp;&nbsp;$!tableTitle
+			#if($downloadId)
+                &nbsp;&nbsp;&nbsp;&nbsp;<a id="$!downloadId" style="color:#72AFD2;cursor: pointer">导出</a>
+			#end
+            </h5>
+        </div>
+		<div class="table-responsive">
+        	<table class="table" id="$!tableId">
+            	<thead>
+            	</thead>
+            	<tbody id="" aria-relevant="all" aria-live="polite" role="alert">
+            	</tbody>
+            </table>
+        </div>
+    </div>
+#end
+
+#macro(toolTable,$tableTitle,$tableId)
+    <div class="box">
+        <div class="box-header">
+            <h5 class="box-title"><i class="fa  fa-table"></i>&nbsp;&nbsp;$!tableTitle
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a  style="cursor:pointer;color:#72AFD2"  onClick="return addRow();">添加</a></h5>
+        </div>
+		<div class="table-responsive">
+        	<table class="table" id="$!tableId">
+            	<thead>
+            	</thead>
+            	<tbody id="" aria-relevant="all" aria-live="polite" role="alert">
+            	</tbody>
+            </table>
+        </div>
+    </div>
+#end
+
+
+#*
+下拉列表框
+	@param id:id值
+	@param defaultSelect:默认选项[k:v]
+	@param datas:列表数据{id:"",value:"--请选择状态--"}
+*#
+#macro(selectList,$id,$defaultSelect,$datas)
+	<div class="col-xs-2 col-md-2" >
+    	<select class="selectpicker"  id="$!id">
+				#set($default = $!defaultSelect.split(":"))
+    			<option value="$default[0]">$default[1]</option>
+    			#foreach($option in $!datas)
+    				<option value="$!option.id"  #if($!option.selected ) selected  #end >$!option.value</option>
+    			#end
+        </select>
+	 </div>
+#end
+

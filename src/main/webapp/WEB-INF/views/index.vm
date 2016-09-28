@@ -1,0 +1,16 @@
+#set($title="ABS-访客预约系统")
+##头部
+#parse("/layout/header.vm")
+<div class="wrapper row-offcanvas row-offcanvas-left" role="main" style="min-height: 580px;">
+	##导航
+	#parse("/layout/sidebar.vm")
+	<aside class="right-side">                
+        <!-- Main content -->
+        <section class="content">
+            <iframe name="main" src="#springUrl('')/default" style="border:none;width:100%;height:850px"></iframe>
+        </section><!-- /.content -->
+    </aside><!-- /.right-side -->
+</div>
+##尾部
+#parse("/layout/footer.vm")
+<script type="text/javascript" src="#springUrl('')/static/js/sidebar.js?ver=$!ver"></script>

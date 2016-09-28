@@ -1,0 +1,12 @@
+.filter-box{
+	height:80px;
+	border:1px solid #e3e3e3;
+	background:white;
+	margin-top:3px;
+	padding: 3px;
+	overflow-x: hidden;
+    overflow-y: auto;
+}
+.padding-min{
+	padding:5px;
+}

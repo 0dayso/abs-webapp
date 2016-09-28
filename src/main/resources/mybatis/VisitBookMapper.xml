@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sn.abs.dao.VisitBookDao">
+	<resultMap type="BookInfo" id="BookInfoMap">
+		<result property="id" column="id" />
+		<result property="erpCode" column="erp_code" />
+		<result property="erpName" column="erp_name" />
+		<result property="visitName" column="visit_name" />
+		<result property="cellphone" column="cellphone" />
+		<result property="bookTime" column="book_time" />
+		<result property="comment" column="comment" />
+		<result property="yn" column="yn" />
+		<result property="createTime" column="create_time" />
+		<result property="updateTime" column="update_time" />
+	</resultMap>
+	<resultMap type="StaffInfo" id="StaffInfoMap">
+		<result property="id" column="id" />
+		<result property="erpCode" column="erp_code" />
+		<result property="erpName" column="erp_name" />
+		<result property="dept" column="dept" />
+		<result property="cellphone" column="cellphone" />
+		<result property="yn" column="yn" />
+		<result property="createTime" column="create_time" />
+		<result property="updateTime" column="update_time" />
+	</resultMap>
+	<resultMap type="VisitInfo" id="VisitInfoMap">
+		<result property="id" column="id" />
+		<result property="visitName" column="visit_name" />
+		<result property="identityCard" column="identity_card" />
+		<result property="cellphone" column="cellphone" />
+		<result property="address" column="address" />
+		<result property="note" column="note" />
+		<result property="yn" column="yn" />
+		<result property="createTime" column="create_time" />
+		<result property="updateTime" column="update_time" />
+	</resultMap>
+	
+	
+	<select id="queryBookInfoPage" resultMap="BookInfoMap" parameterType="java.util.Map" >
+		select * from book_info 
+		where yn=1
+		<if test="erpCode!=null and erpCode!='' ">
+		 	and erp_code= #{erpCode}
+		</if>
+		<if test="visitName!=null and visitName!='' ">
+		 	and visit_name like concat('%',#{visitName},'%')
+		</if>
+		<if test="cellphone!=null and cellphone!='' ">
+		 	and cellphone= #{cellphone}
+		</if>
+		<if test="startTime!=null and startTime!='' ">
+ 			<![CDATA[
+         		and book_time>=#{startTime}
+       		]]>
+ 		</if>
+ 		<if test="endTime!=null and endTime!='' ">
+ 			<![CDATA[
+         		and book_time<=#{endTime} 
+       		]]>
+ 		</if>
+		
+		ORDER BY update_time desc
+		<if test="offset!=null and limit!=null ">
+		 	limit #{offset},#{limit}
+		</if>
+	</select>
+	<select id="queryBookInfoCount" resultType="java.lang.Long" parameterType="java.util.Map">
+		select count(1) from book_info 
+		where yn=1
+		<if test="erpCode!=null and erpCode!='' ">
+		 	and erp_code= #{erpCode}
+		</if>
+		<if test="visitName!=null and visitName!='' ">
+		 	and visit_name like concat('%',#{visitName},'%')
+		</if>
+		<if test="cellphone!=null and cellphone!='' ">
+		 	and cellphone= #{cellphone}
+		</if>
+		<if test="startTime!=null and startTime!='' ">
+ 			<![CDATA[
+         		and book_time>=#{startTime}
+       		]]>
+ 		</if>
+ 		<if test="endTime!=null and endTime!='' ">
+ 			<![CDATA[
+         		and book_time<=#{endTime} 
+       		]]>
+ 		</if>
+		
+		ORDER BY update_time desc
+	</select>
+	<select id="getStaffInfo" resultMap="StaffInfoMap" parameterType="java.lang.String" >
+		select * from staff_info where yn=1   and erp_code= #{erpCode}
+	</select>
+	<select id="queryStaffInfoPage" resultMap="StaffInfoMap" parameterType="java.util.Map" >
+		select * from staff_info 
+		where yn=1
+		<if test="erpCode!=null and erpCode!='' ">
+		 	and erp_code= #{erpCode}
+		</if>
+		<if test="erpName!=null and erpName!='' ">
+		 	and erp_name like concat('%',#{erpName},'%')
+		</if>
+		<if test="dept!=null and dept!='' ">
+		 	and dept like concat('%',#{dept},'%')
+		</if>
+		<if test="cellphone!=null and cellphone!='' ">
+		 	and cellphone= #{cellphone}
+		</if>
+		
+		ORDER BY update_time desc
+		<if test="offset!=null and limit!=null ">
+		 	limit #{offset},#{limit}
+		</if>
+	</select>
+	<select id="queryStaffInfoCount" resultType="java.lang.Long" parameterType="java.util.Map">
+		select count(1) from staff_info 
+		where yn=1
+		<if test="erpCode!=null and erpCode!='' ">
+		 	and erp_code= #{erpCode}
+		</if>
+		<if test="erpName!=null and erpName!='' ">
+		 	and erp_name like concat('%',#{erpName},'%')
+		</if>
+		<if test="dept!=null and dept!='' ">
+		 	and dept like concat('%',#{dept},'%')
+		</if>
+		<if test="cellphone!=null and cellphone!='' ">
+		 	and cellphone= #{cellphone}
+		</if>
+		
+		ORDER BY update_time desc
+	</select>
+	<select id="queryVisitInfoPage" resultMap="VisitInfoMap" parameterType="java.util.Map" >
+		select * from visit_info 
+		where yn=1
+		<if test="visitName!=null and visitName!='' ">
+		 	and visit_name like concat('%',#{visitName},'%')
+		</if>
+		<if test="identityCard!=null and identityCard!='' ">
+		 	and identity_card= #{identityCard}
+		</if>
+		<if test="cellphone!=null and cellphone!='' ">
+		 	and cellphone= #{cellphone}
+		</if>
+		<if test="address!=null and address!='' ">
+		 	and address like concat('%',#{address},'%')
+		</if>
+		
+		ORDER BY update_time desc
+		<if test="offset!=null and limit!=null ">
+		 	limit #{offset},#{limit}
+		</if>
+	</select>
+	<select id="queryVisitInfoCount" resultType="java.lang.Long" parameterType="java.util.Map">
+		select count(1) from visit_info 
+		where yn=1
+		<if test="visitName!=null and visitName!='' ">
+		 	and visit_name like concat('%',#{visitName},'%')
+		</if>
+		<if test="identityCard!=null and identityCard!='' ">
+		 	and identity_card= #{identityCard}
+		</if>
+		<if test="cellphone!=null and cellphone!='' ">
+		 	and cellphone= #{cellphone}
+		</if>
+		<if test="address!=null and address!='' ">
+		 	and address like concat('%',#{address},'%')
+		</if>
+		
+		ORDER BY update_time desc
+	</select>
+	
+	
+	<!-- Insert -->
+	<insert id="insertBookInfo" parameterType="BookInfo"  >
+		insert into book_info(erp_code,erp_name,visit_name,cellphone,book_time,comment,yn,create_time,update_time) 
+		values(
+			#{erpCode},
+			#{erpName},
+			#{visitName},
+			#{cellphone},
+			#{bookTime},
+			#{comment},
+			1,
+			now(),
+			now()
+			)
+		<selectKey keyProperty="id" resultType="long" order="AFTER">
+			select LAST_INSERT_ID() 
+		</selectKey>
+	</insert>
+	
+	
+	<!--更新-->	
+	<update id="updateBookInfo" parameterType="BookInfo">
+		UPDATE book_info SET 
+			erp_code=#{erpCode},
+			erp_name=#{erpName},
+			visit_name=#{visitName},
+			cellphone=#{cellphone},
+			book_time=#{bookTime},
+			comment=#{comment},
+			update_time=now()
+		where id=#{id}	
+	</update>
+	
+	
+	<!--删除-->	
+	<delete id="deleteBookInfoById" parameterType="java.lang.Long">
+		delete from book_info where id=#{id}
+	</delete>
+	
+</mapper>
